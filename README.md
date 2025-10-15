@@ -1,125 +1,146 @@
-<h1>ExpNo 2 : Implement Depth First Search Traversal of a Graph</h1>
-<h3> Date: 11/09/2025</h3>
+# BREADTH-FIRST-SEARCH
+<h1>ExpNo 3 : Implement Breadth First Search Traversal of a Graph</h1> 
 <h3>Name: THRIKESWAR P</h3>
 <h3>Register Number: 212222230162</h3>
 <H3>Aim:</H3>
-<p> To Implement Depth First Search Traversal of a Graph using Python 3.</p>
+<p>To Implement Breadth First Search Traversal of a Graph using Python 3.</p>
 <h3>Theory:</h3>
-<strong>Depth First Traversal </strong>(or DFS) for a graph is like Depth First Traversal of a tree. The only catch here is that, unlike trees, graphs may contain cycles (a node may be visited twice). Use a Boolean visited array to avoid processing a node more than once. A graph can have more than one DFS traversal. 
-Depth-first search is an algorithm for traversing or searching trees or graph data structures. The algorithm starts at the root node (selecting some arbitrary node as the root node in the case of a graph) and explores as far as possible along each branch before backtracking.
-Step 1: Initially, stack and visited arrays are empty.
+<p>Breadth-First Traversal (or Search) for a graph is like the Breadth-First Traversal of a tree.
+The only catch here is that, unlike trees, graphs may contain cycles so that we may come to the same node again. To avoid processing a node more than once, we divide the vertices into two categories:
+<ol><li>Visited</li>
+<li>Not Visited</li></ol>
+</p>
+<p>A Boolean visited array is used to mark the visited vertices. For simplicity, it is assumed that all vertices are reachable from the starting vertex. BFS uses a queue data structure for traversal.</p>
+<p><strong>How does BFS work?</strong><br>
+  Starting from the root, all the nodes at a particular level are visited first, and then the next level nodes are traversed until all the nodes are visited.
+To do this, a queue is used. All the adjacent unvisited nodes of the current level are pushed into the queue, and the current-level nodes are marked visited and popped from the queue.
+Illustration:
+Let us understand the working of the algorithm with the help of the following example.
+Step1: Initially queue and visited arrays are empty.
+</p>
 
- ![image](https://github.com/natsaravanan/19AI405FUNDAMENTALSOFARTIFICIALINTELLIGENCE/assets/87870499/640b3c6f-3ac1-49a2-a955-68da9a71f446)
+![image](https://github.com/natsaravanan/19AI405FUNDAMENTALSOFARTIFICIALINTELLIGENCE/assets/87870499/8acdebf8-ecc2-4d10-a208-45cce441f059)
 
 
 Queue and visited arrays are empty initially.
-Stack and visited arrays are empty initially.
-Step 2: Visit 0 and put its adjacent nodes which are not visited yet into the stack.
- ![image](https://github.com/natsaravanan/19AI405FUNDAMENTALSOFARTIFICIALINTELLIGENCE/assets/87870499/86dcf7d9-1f9d-49b0-a821-5976a6e77606)
+Step2: Push node 0 into queue and mark it visited.
 
- Visit node 0 and put its adjacent nodes (1, 2, 3) into the stack
- Visit node 0 and put its adjacent nodes (1, 2, 3) into the stack
+![image](https://github.com/natsaravanan/19AI405FUNDAMENTALSOFARTIFICIALINTELLIGENCE/assets/87870499/0e9ce012-8e1f-43d7-b7b9-c0fb19fe0c3f)
 
-Step 3: Now, Node 1 at the top of the stack, so visit node 1 and pop it from the stack and put all of its adjacent nodes which are not visited in the stack.
- ![image](https://github.com/natsaravanan/19AI405FUNDAMENTALSOFARTIFICIALINTELLIGENCE/assets/87870499/e6017942-08b1-4742-87ad-c97eb97bf985)
 
-Visit node 1
- Visit node 1
+Push node 0 into queue and mark it visited.
+Step 3: Remove node 0 from the front of queue and visit the unvisited neighbours and push them into queue.
 
-Step 4: Now, Node 2 at the top of the stack, so visit node 2 and pop it from the stack and put all of its adjacent nodes which are not visited (i.e, 3, 4) in the stack.
- ![image](https://github.com/natsaravanan/19AI405FUNDAMENTALSOFARTIFICIALINTELLIGENCE/assets/87870499/6e6d123c-60ae-4f9c-a27c-c4fc7e57d57c)
+![image](https://github.com/natsaravanan/19AI405FUNDAMENTALSOFARTIFICIALINTELLIGENCE/assets/87870499/67d8fa3b-ce9e-46c2-9dd7-089e204e667a)
 
- Visit node 2 and put its unvisited adjacent nodes (3, 4) into the stack
- Visit node 2 and put its unvisited adjacent nodes (3, 4) into the stack
+Step 4: Remove node 1 from the front of queue and visit the unvisited neighbours and push them into queue.
 
-Step 5: Now, Node 4 at the top of the stack, so visit node 4 and pop it from the stack and put all of its adjacent nodes which are not visited in the stack.
- ![image](https://github.com/natsaravanan/19AI405FUNDAMENTALSOFARTIFICIALINTELLIGENCE/assets/87870499/20b76a05-5668-4da5-8189-e10fb1bb7238)
+![image](https://github.com/natsaravanan/19AI405FUNDAMENTALSOFARTIFICIALINTELLIGENCE/assets/87870499/b0cf0fde-8a86-41cb-a054-36875ac24ab0)
 
- Visit node 4
- Visit node 4
+Step 5: Remove node 2 from the front of queue and visit the unvisited neighbours and push them into queue.
 
-Step 6: Now, Node 3 at the top of the stack, so visit node 3 and pop it from the stack and put all of its adjacent nodes which are not visited in the stack.
- ![image](https://github.com/natsaravanan/19AI405FUNDAMENTALSOFARTIFICIALINTELLIGENCE/assets/87870499/3b88f04a-7846-4f75-89b4-22bbd5b48e52)
+![image](https://github.com/natsaravanan/19AI405FUNDAMENTALSOFARTIFICIALINTELLIGENCE/assets/87870499/8968a163-6b3a-4f7e-8ad4-bbf24f326b9b)
 
-Visit node 3
-Visit node 3
+Step 6: Remove node 3 from the front of queue and visit the unvisited neighbours and push them into queue. 
+As we can see that every neighbours of node 3 is visited, so move to the next node that are in the front of the queue.
 
-Now, the Stack becomes empty, which means we have visited all the nodes, and our DFS traversal ends.
+![image](https://github.com/natsaravanan/19AI405FUNDAMENTALSOFARTIFICIALINTELLIGENCE/assets/87870499/7a1c1b16-ea69-497f-a099-8440200f6dc0)
 
-<h3>Algorithm:</h3>
-<B><ol>
- <li>Construct a Graph with Nodes and Edges</li>
- <li>Depth First Search Uses Stack and Recursion</li>
- <li>Insert a START node to the STACK</li>
- <li>Find its Successors Or neighbors and Check whether the node is visited or not</li>
- <li>If Not Visited, add it to the STACK. Else Call The Function Again Until No more nodes needs to be visited.</li>
-</ol></B>
+Steps 7: Remove node 4 from the front of queue and visit the unvisited neighbours and push them into queue. 
+As we can see that every neighbours of node 4 are visited, so move to the next node that is in the front of the queue.
 
-<h3>Program:</h3>
+![image](https://github.com/natsaravanan/19AI405FUNDAMENTALSOFARTIFICIALINTELLIGENCE/assets/87870499/8e16ffa3-c3d6-4774-822b-6eb84adedad9)
 
+Remove node 4 from the front of queue and visit the unvisited neighbours and push them into queue.
+Now, Queue becomes empty, So, terminate these process of iteration.
+
+
+<hr>
+<h2>Algorithm:</h2>
+<hr>
+<ol>
+  <li>Construct a Graph with Nodes and Edges</li>
+ <li>Breadth First Uses Queue and iterates through the Queue for Traversal.</li>
+  <li>Insert a Start Node into the Queue.</li>
+<li>Find its Successors Or neighbors and Check whether the node is visited or not.</li>
+<li>If Not Visited, add it to the Queue. Else Continue.</li>
+<li>Iterate steps 4 and 5 until all nodes get visited, and there are no more unvisited nodes.</li>
+
+</ol>
+
+## Program:
 ```
-
 from collections import deque
 from collections import defaultdict
-
-def dfs(graph,start,visited,path):
+def bfs(graph,start,visited,path):
+    queue = deque()
     path.append(start)
-    visited[start]=True
-    for neighbour in graph[start]:
-        if visited[neighbour]==False:
-            dfs(graph,neighbour,visited,path)
-            visited[neighbour]=True
+    queue.append(start)
+    visited[start] = True
+    while len(queue) != 0:
+        tmpnode = queue.popleft()
+        for neighbour in graph[tmpnode]:
+            if visited[neighbour] == False:
+                path.append(neighbour)
+                queue.append(neighbour)
+                visited[neighbour] = True
     return path
-graph=defaultdict(list)
-n,e=map(int,input().split())
+
+graph = defaultdict(list)
+v,e = map(int,input().split())
 for i in range(e):
-    u,v=map(str,input().split())
+    u,v = map(str,input().split())
     graph[u].append(v)
     graph[v].append(u)
-#print(graph)
-start='A'
-visited=defaultdict(bool)
-path=[]
-traversedpath=dfs(graph,start,visited,path)
+
+start = 'A'
+path = []
+visited = defaultdict(bool)
+traversedpath = bfs(graph,start,visited,path)
 print(traversedpath)
 ```
-
 <hr>
 <h3>Sample Input</h3>
 <hr>
-8 9 <BR>
+7 9 <BR>
 A B <BR>
 A C <BR>
-B E <BR>
+A F <BR>
+C E <BR>
+C F <BR>
 C D <BR>
-B D <BR>
-C G <BR>
-D F <BR>
+D E <BR>
+D G <BR>
 G F <BR>
-F H <BR>
 <hr>
 <h3>Sample Output</h3>
 <hr>
-['A', 'B', 'E', 'D', 'C', 'G', 'F', 'H']
+['A', 'B', 'C', 'F', 'E', 'D', 'G']
 
 <hr>
 
 <hr>
 <h3>Sample Input</h3>
 <hr>
-5 5 <BR>
+5 6 <BR>
 0 1 <BR>
 0 2 <BR>
-0 3 <BR>
-2 3 <BR>
+1 2 <BR>
+1 3 <BR>
 2 4 <BR>
+3 4 <BR>
 <hr>
 <h3>Sample Output</h3>
 <hr>
 ['0', '1', '2', '3', '4']
-
 <hr>
 <h3>Result:</h3>
 <hr>
-<p>Thus,a Graph was constructed and implementation of Depth First Search for the same graph was done successfully.</p>
+<p>Thus,a Graph was constructed and implementation of Breadth First Search for the same graph was done successfully.</p>
+
+
+
+
+
+
 
